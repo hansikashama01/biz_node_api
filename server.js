@@ -15,20 +15,20 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.log(err));
 
 // ⭐ GET
-app.get('/items', async (req, res) => {
+app.get('/api/items', async (req, res) => {
   const items = await Item.find();
   res.json(items);
 });
 
 // ⭐ POST
-app.post('/items', async (req, res) => {
+app.post('/api/items', async (req, res) => {
   const newItem = new Item({ name: req.body.name });
   await newItem.save();
   res.json({ message: "Item added!", newItem });
 });
 
 // ⭐ PUT
-app.put('/items/:id', async (req, res) => {
+app.put('/api/items/:id', async (req, res) => {
   const updated = await Item.findByIdAndUpdate(
     req.params.id,
     { name: req.body.name },
