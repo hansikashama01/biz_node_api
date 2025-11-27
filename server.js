@@ -38,12 +38,14 @@ app.put('/api/items/:id', async (req, res) => {
 });
 
 // ⭐ DELETE
-app.delete('/items/:id', async (req, res) => {
+app.delete('/api/items/:id', async (req, res) => {
   await Item.findByIdAndDelete(req.params.id);
   res.json({ message: "Item deleted!" });
 });
 
-// ⭐ Start server using PORT from .env
-const PORT = process.PORT || 5000;
-  console.log(`Server running on port ${process.env.PORT}`)
-);
+// ⭐ FIXED: Start server using PORT from .env
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
