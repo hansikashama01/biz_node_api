@@ -32,4 +32,6 @@ jobs:
         touch .env
         echo "${{ secrets.MONGO_URI }}" > .env
         echo "${{ secrets.PORT }}" > .env
+    - run: pm2 restart api
+
 
