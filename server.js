@@ -44,6 +44,6 @@ app.delete('/items/:id', async (req, res) => {
 });
 
 // ⭐ Start server using PORT from .env
-app.listen(process.env.PORT, () =>
+const PORT = process.PORT || 5000;
   console.log(`Server running on port ${process.env.PORT}`)
 );
