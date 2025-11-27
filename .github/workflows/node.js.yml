@@ -30,7 +30,8 @@ jobs:
     - run: npm run build --if-present
     - run: |
         touch .env
-        echo "${{ secrets.MONGO_URI }}" > .env
+        echo MONGO_URI=${{ secrets.MONGO_URI }} > .env
+
     - run: pm2 restart api
 
 
